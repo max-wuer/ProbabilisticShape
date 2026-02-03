@@ -134,6 +134,10 @@ class FEMShapeDerivative(object):
             differences = []
             for stepsize in epsilons:
                 self.my_mesh = perturbe_mesh(self.my_mesh, stepsize, v_interpolation)
+
+                ##
+                ##  This part of the taylor test still uses FEM and mesh!!
+                ##
                 tmp_u_fem = solve_fem_pde(self.domain_dx, df.FunctionSpace(self.my_mesh, 'CG', self.function_space_degree), self.h_expr, self.c_expr, self.g_expr)
 
                 tmp_j = tracking_type_functional(self.domain_dx, tmp_u_fem, self.tracking_data_expr)

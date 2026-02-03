@@ -116,6 +116,9 @@ class PaperDiffusion(object):
         number_samples_omega_minus = number_samples_in_domain - number_samples_omega_plus
 
         if generate_plot:
+            #
+            #
+            #
             omega_plus = samples_in_domain[np.where(density_eval > 0)[0]]
             omega_minus = samples_in_domain[np.where(density_eval < 0)[0]]
 
@@ -298,11 +301,11 @@ class MeshFreeProbabilisticShapeDerivative(PaperDiffusion):
         self.exact_results_dict = {'name': 'exact'}
         self.perturbations = perturbation_list
 
-        self.sample_number_exit_points = 10000
+        self.sample_number_exit_points = 100000
         self.iter_range = self.sample_number_exit_points * self.batch_size
 
         # number of computations of $\D\Phi [V]$ for variance estimator
-        self.monte_carlo_variance_estimator_number = 100
+        self.monte_carlo_variance_estimator_number = 1
 
     def init_diffusion(self):
         print('---> sample measure, constants and exit points')
